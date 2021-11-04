@@ -3,85 +3,62 @@ var p2score = 0;
 var tie = 0;
 var turn = 1;
 
-function checkWin(){
-   if ($(".row-1 .box.x").length === 3){
-    console.log("working")
-   }
-   if ($(".row-2 .box.x").length === 3){
-       console.log("working2")
-   }
-   if ($(".row-3 .box.x").length === 3){
-       console.log("working3")
-   }
-   if ($(".col-1.x").length === 3){
-    console.log("working")
-    }
-    if ($(".col-2.x").length === 3){
-    console.log("working")
-    }
-    if ($(".col-3.x").length === 3){
-    console.log("working")
-    }
-    if($("#1").hasClass("x")
-   && $("#5").hasClass("x") 
-   && $("#9").hasClass("x"))
-   {
-       console.log("Working")
-   }
-   if($("#3").hasClass("x")
-   && $("#5").hasClass("x")
-   && $("#7").hasClass("x"))
-   {
-       console.log("Working")
-   }
+function checkWinner(){
+    if ($(".row-1 .box.X").length ===3 ||
+    $(".row-2 .box.X").length ===3 ||
+    $(".row-3 .box.X").length ===3 ||
+    $(".col-1.X").length ===3 ||
+    $(".col-2.X").length ===3 ||
+    $(".col-3.X").length ===3 ||
+    $("#1").hasClass("X")
+    && $("#5").hasClass("X")
+    && $("#9").hasClass("X") ||
+    $("#3").hasClass("X")
+    && $("#5").hasClass("X")
+    && $("#7").hasClass("X"))
+    {
+        console.log("P1 Win");
+        p1score++;
+        $("#p1score").text(p1score)
+    }}
 
-   if ($(".row-1 .box.o").length === 3){
-    console.log("working")
-   }
-   if ($(".row-2 .box.o").length === 3){
-       console.log("working2")
-   }
-   if ($(".row-3 .box.o").length === 3){
-       console.log("working3")
-   }
-   if ($(".col-1.o").length === 3){
-    console.log("working")
-    }
-    if ($(".col-2.o").length === 3){
-    console.log("working")
-    }
-    if ($(".col-3.o").length === 3){
-    console.log("working")
-    }
-    if($("#1").hasClass("o")
-   && $("#5").hasClass("o") 
-   && $("#9").hasClass("o"))
-   {
-       console.log("Working")
-   }
-   if($("#3").hasClass("o")
-   && $("#5").hasClass("o")
-   && $("#7").hasClass("o"))
-   {
-       console.log("Working")
-   }
 
+function checkWinnerO(){
+    if ($(".row-1 .box.O").length ===3 ||
+    $(".row-2 .box.O").length ===3 ||
+    $(".row-3 .box.O").length ===3 ||
+    $(".col-1.O").length ===3 ||
+    $(".col-2.O").length ===3 ||
+    $(".col-3.O").length ===3 ||
+    $("#1").hasClass("O")
+    && $("#5").hasClass("O")
+    && $("#9").hasClass("O") ||
+    $("#3").hasClass("O")
+    && $("#5").hasClass("O")
+    && $("#7").hasClass("O"))
+    {
+        console.log("P2 Win");
+        p1score++;
+        $("#p2score").text(p2score)
+    }
 }
+
 
 $(".box").click(function(){
     if(turn === 1){
-        $(this).text("x")
-        $(this).addClass("x") 
+        $(this).text("X")
+        $(this).addClass("X")
         turn = 2;
+        console.log(turn)
         $("#turn").text(2)
-        checkWin();
+        checkWinner();
     }
-    else 
-    {
-        $(this).text("o")
-        $(this).addClass("o")
+    else{
+        $(this).text("O")
+        $(this).addClass("O")
         turn = 1;
+        console.log(turn)
         $("#turn").text(1)
-        checkWin();
+        checkWinnerO();
     }
 })
